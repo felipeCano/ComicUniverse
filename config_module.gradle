@@ -1,0 +1,38 @@
+apply from: '../utils.gradle'
+
+android {
+
+    compileSdkVersion versions.compileSdk
+
+
+   /*signingConfigs {
+       release {
+           storeFile file("/home/felipecano/FelipeCanoDocuments/private_key.pepk")
+           storePassword readProperty("a")
+           keyAlias readProperty("productions")
+           keyPassword readProperty("A")
+       }
+   }*/
+
+    buildTypes {
+        release {
+            //signingConfig signingConfigs.release
+            minifyEnabled false
+            useProguard false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            testProguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguardTest-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            useProguard false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            testProguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguardTest-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
