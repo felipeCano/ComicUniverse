@@ -13,7 +13,7 @@ class ComicRepository(
 
     fun getComic() : Observable<List<Comic>> {
         return apiComic.getComic().map { response ->
-            Log.d("getPopular", response.toString())
+            Log.d("getComic", response.toString())
             Gson().fromJson(response, ComicRemote::class.java).results
         }
     }

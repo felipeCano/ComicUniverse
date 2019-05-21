@@ -30,7 +30,7 @@ object Util {
 
     fun retrofitProvider(okHttpClient : OkHttpClient, gson : Gson) : ApiComic{
         return Retrofit.Builder()
-            .baseUrl("https://gateway.marvel.com:443/v1/public/")
+            .baseUrl("https://gateway.marvel.com/v1/public/")
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create(gson))

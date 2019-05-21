@@ -18,7 +18,6 @@ android {
         versionName versions.versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-    dynamicFeatures = []
 }
 
 dependencies {

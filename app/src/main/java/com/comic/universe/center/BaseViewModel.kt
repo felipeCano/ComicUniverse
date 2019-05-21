@@ -23,7 +23,7 @@ open class BaseViewModel : ViewModel() {
             .subscribe ({
                 liveData.postValue(it)
             },{
-                Log.d("holi","holi2")
+                Log.d("holi",it.toString())
             })
         disposables.add(
             disposables1
