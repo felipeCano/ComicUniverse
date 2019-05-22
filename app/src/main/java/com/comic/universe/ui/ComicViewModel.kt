@@ -8,4 +8,24 @@ class ComicViewModel(private val comicRepository: ComicRepository) : BaseViewMod
     fun getComic(){
         addDisposable(comicRepository.getComic())
     }
+
+    fun getCharacters(){
+        addDisposable(comicRepository.getCharacters())
+    }
+
+    fun getCreators(){
+        addDisposable(comicRepository.getCreators())
+    }
+
+    fun getEvents(){
+        addDisposable(comicRepository.getEvents())
+    }
+
+    fun getSeries(){
+        addDisposable(comicRepository.getSeries())
+    }
+
+    fun getStories(){
+        addDisposable(comicRepository.getStories())
+    }
 }

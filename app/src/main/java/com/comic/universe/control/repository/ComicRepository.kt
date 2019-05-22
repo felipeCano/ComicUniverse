@@ -17,4 +17,39 @@ class ComicRepository(
             Gson().fromJson(response, ComicRemote::class.java).results
         }
     }
+
+    fun getCharacters() : Observable<List<Comic>> {
+        return apiComic.getCharacters().map { response ->
+            Log.d("getCharacters", response.toString())
+            Gson().fromJson(response, ComicRemote::class.java).results
+        }
+    }
+
+    fun getCreators() : Observable<List<Comic>> {
+        return apiComic.getCreators().map { response ->
+            Log.d("getCreators", response.toString())
+            Gson().fromJson(response, ComicRemote::class.java).results
+        }
+    }
+
+    fun getEvents() : Observable<List<Comic>> {
+        return apiComic.getEvents().map { response ->
+            Log.d("getEvents", response.toString())
+            Gson().fromJson(response, ComicRemote::class.java).results
+        }
+    }
+
+    fun getSeries() : Observable<List<Comic>> {
+        return apiComic.getSeries().map { response ->
+            Log.d("getSeries", response.toString())
+            Gson().fromJson(response, ComicRemote::class.java).results
+        }
+    }
+
+    fun getStories() : Observable<List<Comic>> {
+        return apiComic.getStories().map { response ->
+            Log.d("getStories", response.toString())
+            Gson().fromJson(response, ComicRemote::class.java).results
+        }
+    }
 }

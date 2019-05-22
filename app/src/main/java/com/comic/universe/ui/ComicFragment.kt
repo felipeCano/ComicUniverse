@@ -17,6 +17,11 @@ class ComicFragment : BaseFragment() {
         comicRepository = ComicRepository(retrofit)
         comicViewModel = ComicViewModel(comicRepository)
         comicViewModel.getComic()
+        comicViewModel.getCharacters()
+        comicViewModel.getCreators()
+        comicViewModel.getEvents()
+        comicViewModel.getSeries()
+        comicViewModel.getStories()
     }
 
     override fun fragmentLayout(): Int = R.layout.fragment_comic

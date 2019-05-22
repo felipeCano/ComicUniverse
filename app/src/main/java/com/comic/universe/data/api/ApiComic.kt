@@ -14,7 +14,6 @@ const val API_KEY_PUBLIC = "ca799fa8fea5b187f2f75aec76355b53"
 const val API_KEY_PRIVATE = "de212838d957f48b4863827e057255cc06b7c00e"
 const val ACCEPT_TOKEN: String = "Accept: application/json"
 const val CONTENT_TYPE: String = "Content-Type: application/json"
-//var formattedDate = SimpleDateFormat("yyyyMMdd").format(Timestamp(System.currentTimeMillis()))
 val TIMESTAMP_MD5 = System.currentTimeMillis()
 
 fun md5(): String {
@@ -35,4 +34,45 @@ interface ApiComic {
         @Query("ts") timestamp: String = TIMESTAMP_MD5.toString(),
         @Query("hash") hash: String = md5()
     ): Observable<JsonElement>
+
+    @Headers(ACCEPT_TOKEN, CONTENT_TYPE)
+    @GET("characters")
+    fun getCharacters(
+        @Query("apikey") apiKey: String = API_KEY_PUBLIC,
+        @Query("ts") timestamp: String = TIMESTAMP_MD5.toString(),
+        @Query("hash") hash: String = md5()
+    ): Observable<JsonElement>
+
+    @Headers(ACCEPT_TOKEN, CONTENT_TYPE)
+    @GET("creators")
+    fun getCreators(
+        @Query("apikey") apiKey: String = API_KEY_PUBLIC,
+        @Query("ts") timestamp: String = TIMESTAMP_MD5.toString(),
+        @Query("hash") hash: String = md5()
+    ): Observable<JsonElement>
+
+    @Headers(ACCEPT_TOKEN, CONTENT_TYPE)
+    @GET("events")
+    fun getEvents(
+        @Query("apikey") apiKey: String = API_KEY_PUBLIC,
+        @Query("ts") timestamp: String = TIMESTAMP_MD5.toString(),
+        @Query("hash") hash: String = md5()
+    ): Observable<JsonElement>
+
+    @Headers(ACCEPT_TOKEN, CONTENT_TYPE)
+    @GET("series")
+    fun getSeries(
+        @Query("apikey") apiKey: String = API_KEY_PUBLIC,
+        @Query("ts") timestamp: String = TIMESTAMP_MD5.toString(),
+        @Query("hash") hash: String = md5()
+    ): Observable<JsonElement>
+
+    @Headers(ACCEPT_TOKEN, CONTENT_TYPE)
+    @GET("stories")
+    fun getStories(
+        @Query("apikey") apiKey: String = API_KEY_PUBLIC,
+        @Query("ts") timestamp: String = TIMESTAMP_MD5.toString(),
+        @Query("hash") hash: String = md5()
+    ): Observable<JsonElement>
+
 }
