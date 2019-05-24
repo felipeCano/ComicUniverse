@@ -15,15 +15,15 @@ open class BaseViewModel : ViewModel() {
     val liveData = MutableLiveData<List<Comic>>()
     private val disposables = CompositeDisposable()
 
-    protected fun  addDisposable(observable: Observable<List<Comic>>){
-        val disposables1 : Disposable = observable.subscribeOn(Schedulers.io())
+    protected fun addDisposable(observable: Observable<List<Comic>>) {
+        val disposables1: Disposable = observable.subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe{
+            .doOnSubscribe {
             }
-            .subscribe ({
+            .subscribe({
                 liveData.postValue(it)
-            },{
-                Log.d("holi",it.toString())
+            }, {
+                Log.d("holi", it.toString())
             })
         disposables.add(
             disposables1

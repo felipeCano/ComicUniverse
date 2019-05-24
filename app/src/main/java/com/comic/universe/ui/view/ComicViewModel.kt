@@ -1,4 +1,4 @@
-package com.comic.universe.ui
+package com.comic.universe.ui.view
 
 import com.comic.universe.center.BaseViewModel
 import com.comic.universe.control.repository.ComicRepository

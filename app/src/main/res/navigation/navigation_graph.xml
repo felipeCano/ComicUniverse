@@ -6,6 +6,6 @@
 
     <fragment
         android:id="@+id/comicFragment"
-        android:name="com.comic.universe.ui.ComicFragment"
+        android:name="com.comic.universe.ui.view.ComicFragment"
         android:label="ComicFragment" />
 </navigation>

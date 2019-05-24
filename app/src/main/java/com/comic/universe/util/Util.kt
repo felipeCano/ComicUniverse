@@ -1,9 +1,6 @@
 package com.comic.universe.util
 
-import android.content.Context
-import androidx.room.Room
 import com.comic.universe.data.api.ApiComic
-import com.comic.universe.data.db.ComicDataBase
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
