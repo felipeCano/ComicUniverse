@@ -23,7 +23,7 @@ RecyclerView.Adapter<ComicAdapter.ComicHolder>(){
     }
 
     override fun onBindViewHolder(holder: ComicHolder, position: Int) {
-        holder.mimageComic.text = myDataset[position].originalName
+        holder.mimageComic.text = myDataset[position].title
         /*Picasso.get()
             .load(myDataset[position].imageserie)
             .resize(600, 950)

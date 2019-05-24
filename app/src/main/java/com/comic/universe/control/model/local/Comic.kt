@@ -8,9 +8,6 @@ import com.google.gson.annotations.SerializedName
 data class Comic(
     @PrimaryKey
     val id: Int,
-    @SerializedName("title")
-    val originalName: String
-    //@SerializedName("resourceURI")
-   // val imageserie: String
-    //val overview: String
+    val title: String
+
 )

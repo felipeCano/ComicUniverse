@@ -5,9 +5,10 @@ import com.google.gson.annotations.SerializedName
 
 data class ComicRemote (
   //  var page: Int,
-    var results: List<Comic>
-    //@SerializedName("total_results")
-    //var totalResults: Int,
-    //@SerializedName("total_pages")
-    //var totalPages: Int
+
+    val count: Int,
+    val limit: Int,
+    val offset: Int,
+    var results: List<Comic>,
+    val total: Int
 )
