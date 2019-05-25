@@ -6,26 +6,26 @@ import com.comic.universe.control.repository.ComicRepository
 class ComicViewModel(private val comicRepository: ComicRepository) : BaseViewModel() {
 
     fun getComic(){
-        addDisposable(comicRepository.getComic())
+        addComics(comicRepository.getComic())
     }
 
     fun getCharacters(){
-        addDisposable(comicRepository.getCharacters())
+        addCharacters(comicRepository.getCharacters())
     }
 
     fun getCreators(){
-        addDisposable(comicRepository.getCreators())
+        addCreators(comicRepository.getCreators())
     }
 
     fun getEvents(){
-        addDisposable(comicRepository.getEvents())
+        addComics(comicRepository.getEvents())
     }
 
     fun getSeries(){
-        addDisposable(comicRepository.getSeries())
+        addComics(comicRepository.getSeries())
     }
 
     fun getStories(){
-        addDisposable(comicRepository.getStories())
+        addComics(comicRepository.getStories())
     }
 }

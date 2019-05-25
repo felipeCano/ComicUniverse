@@ -4,6 +4,7 @@ import androidx.lifecycle.Observer
 import com.comic.universe.R
 import com.comic.universe.center.BaseFragment
 import com.comic.universe.control.model.local.Comic
+import com.comic.universe.control.model.local.Creators
 import com.comic.universe.control.repository.ComicRepository
 import com.comic.universe.ui.adapter.ComicAdapter
 import kotlinx.android.synthetic.main.fragment_comic.*
@@ -21,22 +22,23 @@ class ComicFragment : BaseFragment() {
     private fun initializeUi(){
         comicRepository = ComicRepository(retrofit)
         comicViewModel = ComicViewModel(comicRepository)
-        comicViewModel.getComic()
-       // comicViewModel.getCharacters()
-       // comicViewModel.getCreators()
-       // comicViewModel.getEvents()
-       // comicViewModel.getSeries()
-      //  comicViewModel.getStories()
+        //comicViewModel.getComic()
+        //comicViewModel.getCharacters()
+        comicViewModel.getCreators()
+        //comicViewModel.getEvents()
+        //comicViewModel.getSeries()
+        //comicViewModel.getStories()
 
-        comicViewModel.liveData.observe(this, recyclerComic)
+        comicViewModel.liveDataCreators.observe(this, recyclerComic)
     }
 
-    private fun initAdapterComic(comic : List<Comic>){
+
+    private fun initAdapterComic(comic : List<Creators>){
         mAdapterComic = ComicAdapter(comic)
         rvComic.adapter = mAdapterComic
     }
 
-    var recyclerComic = Observer<List<Comic>>{comic ->
+    var recyclerComic = Observer<List<Creators>>{comic ->
         initAdapterComic(comic)
     }
 

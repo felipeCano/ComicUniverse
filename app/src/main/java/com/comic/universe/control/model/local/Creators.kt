@@ -1,14 +1,12 @@
 package com.comic.universe.control.model.local
 
-import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "Comic")
-data class Comic(
+data class Creators (
     @PrimaryKey
     val id: Int,
-  //  val thumbnail : Thumbnail,
-    val title: String
+    //  val thumbnail : Thumbnail,
+    val firstName: String
 
 ){
     data class Thumbnail(

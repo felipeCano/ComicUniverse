@@ -6,10 +6,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.comic.universe.R
 import com.comic.universe.control.model.local.Comic
+import com.comic.universe.control.model.local.Creators
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.adapter_comic.view.*
 
-class ComicAdapter(var myDataset : List<Comic>) :
+const val EXTENSIONS_IMAGE = ".jgp"
+class ComicAdapter(var myDataset : List<Creators>) :
 RecyclerView.Adapter<ComicAdapter.ComicHolder>(){
 
     class ComicHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -23,12 +25,16 @@ RecyclerView.Adapter<ComicAdapter.ComicHolder>(){
     }
 
     override fun onBindViewHolder(holder: ComicHolder, position: Int) {
-        holder.mimageComic.text = myDataset[position].title
-        /*Picasso.get()
-            .load(myDataset[position].imageserie)
-            .resize(600, 950)
-            .centerCrop()
-            .into(holder.mimageComic)*/
+        holder.mimageComic.text = myDataset[position].firstName
+
+        /*if(myDataset[position].thumbnail != null){
+            Picasso.get()
+                .load(myDataset[position].thumbnail!!.path + EXTENSIONS_IMAGE)
+                .resize(600, 950)
+                .centerCrop()
+                .into(holder.mimageComic)
+        }*/
+
     }
 
     override fun getItemCount(): Int = myDataset.size

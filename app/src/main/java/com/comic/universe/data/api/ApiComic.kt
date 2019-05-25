@@ -32,7 +32,9 @@ interface ApiComic {
     fun getComic(
         @Query("apikey") apiKey: String = API_KEY_PUBLIC,
         @Query("ts") timestamp: String = TIMESTAMP_MD5.toString(),
-        @Query("hash") hash: String = md5()
+        @Query("hash") hash: String = md5(),
+        @Query("limit") limit: Int = 100,
+        @Query("offset") offset: Int = 0
     ): Observable<JsonElement>
 
     @Headers(ACCEPT_TOKEN, CONTENT_TYPE)
@@ -40,7 +42,9 @@ interface ApiComic {
     fun getCharacters(
         @Query("apikey") apiKey: String = API_KEY_PUBLIC,
         @Query("ts") timestamp: String = TIMESTAMP_MD5.toString(),
-        @Query("hash") hash: String = md5()
+        @Query("hash") hash: String = md5(),
+        @Query("limit") limit: Int = 10,
+        @Query("offset") offset: Int = 0
     ): Observable<JsonElement>
 
     @Headers(ACCEPT_TOKEN, CONTENT_TYPE)
@@ -48,7 +52,9 @@ interface ApiComic {
     fun getCreators(
         @Query("apikey") apiKey: String = API_KEY_PUBLIC,
         @Query("ts") timestamp: String = TIMESTAMP_MD5.toString(),
-        @Query("hash") hash: String = md5()
+        @Query("hash") hash: String = md5(),
+        @Query("limit") limit: Int = 100,
+        @Query("offset") offset: Int = 0
     ): Observable<JsonElement>
 
     @Headers(ACCEPT_TOKEN, CONTENT_TYPE)
@@ -56,7 +62,9 @@ interface ApiComic {
     fun getEvents(
         @Query("apikey") apiKey: String = API_KEY_PUBLIC,
         @Query("ts") timestamp: String = TIMESTAMP_MD5.toString(),
-        @Query("hash") hash: String = md5()
+        @Query("hash") hash: String = md5(),
+        @Query("limit") limit: Int = 100,
+        @Query("offset") offset: Int = 0
     ): Observable<JsonElement>
 
     @Headers(ACCEPT_TOKEN, CONTENT_TYPE)
@@ -64,7 +72,9 @@ interface ApiComic {
     fun getSeries(
         @Query("apikey") apiKey: String = API_KEY_PUBLIC,
         @Query("ts") timestamp: String = TIMESTAMP_MD5.toString(),
-        @Query("hash") hash: String = md5()
+        @Query("hash") hash: String = md5(),
+        @Query("limit") limit: Int = 100,
+        @Query("offset") offset: Int = 0
     ): Observable<JsonElement>
 
     @Headers(ACCEPT_TOKEN, CONTENT_TYPE)
@@ -72,7 +82,9 @@ interface ApiComic {
     fun getStories(
         @Query("apikey") apiKey: String = API_KEY_PUBLIC,
         @Query("ts") timestamp: String = TIMESTAMP_MD5.toString(),
-        @Query("hash") hash: String = md5()
+        @Query("hash") hash: String = md5(),
+        @Query("limit") limit: Int = 100,
+        @Query("offset") offset: Int = 0
     ): Observable<JsonElement>
 
 }
