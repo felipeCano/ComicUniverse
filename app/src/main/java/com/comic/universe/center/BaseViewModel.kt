@@ -18,6 +18,7 @@ open class BaseViewModel : ViewModel() {
     private val disposables = CompositeDisposable()
     val liveDataCharacters = MutableLiveData<List<Characters>>()
     val liveDataCreators = MutableLiveData<List<Creators>>()
+    val liveDataDetailComic = MutableLiveData<Comic>()
 
     protected fun addComics(observable: Observable<List<Comic>>) {
         val disposables1: Disposable = observable.subscribeOn(Schedulers.io())
@@ -61,6 +62,20 @@ open class BaseViewModel : ViewModel() {
             })
         disposables.add(
             disposables1
+        )
+    }
+
+    protected fun  addDisposableDetail(observable: Observable<Comic>){
+        disposables.add(observable.subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe{
+            }
+            .subscribe ({
+                liveDataDetailComic.postValue(it)
+                Log.d("addDisposableDetail", it.toString())
+            },{
+                Log.d("holiDetail",it.toString())
+            })
         )
     }
 }

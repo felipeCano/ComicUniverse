@@ -4,6 +4,7 @@ import com.google.gson.JsonElement
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Headers
+import retrofit2.http.Path
 import retrofit2.http.Query
 import java.security.MessageDigest
 import java.sql.Timestamp
@@ -87,4 +88,12 @@ interface ApiComic {
         @Query("offset") offset: Int = 0
     ): Observable<JsonElement>
 
+    @Headers(ACCEPT_TOKEN, CONTENT_TYPE)
+    @GET("{comicId}")
+    fun getDetailComic(
+        @Path("comicId") comicId: Int,
+        @Query("apikey") apiKey: String = API_KEY_PUBLIC,
+        @Query("ts") timestamp: String = TIMESTAMP_MD5.toString(),
+        @Query("hash") hash: String = md5()
+    ): Observable<JsonElement>
 }

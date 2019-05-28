@@ -57,4 +57,11 @@ class ComicRepository(
             Gson().fromJson(response, Marvel::class.java).data.results
         }
     }
+
+
+    fun getDetailComic(serieId: Int): Observable<Comic> {
+        return apiComic.getDetailComic(serieId).map { response ->
+            Gson().fromJson(response, Comic::class.java)
+        }
+    }
 }

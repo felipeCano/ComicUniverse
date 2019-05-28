@@ -7,15 +7,30 @@ import androidx.recyclerview.widget.RecyclerView
 import com.comic.universe.R
 import com.comic.universe.control.model.local.Comic
 import com.comic.universe.control.model.local.Creators
+import com.comic.universe.ui.interfaces.onDetailsComicsInterfaces
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.adapter_comic.view.*
 
 const val EXTENSIONS_IMAGE = ".jgp"
-class ComicAdapter(var myDataset : List<Creators>) :
-RecyclerView.Adapter<ComicAdapter.ComicHolder>(){
 
-    class ComicHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-            val mimageComic = itemView.imageComic
+class ComicAdapter(var myDataset: List<Comic>) :
+    RecyclerView.Adapter<ComicAdapter.ComicHolder>() {
+
+    var detailComic: onDetailsComicsInterfaces? = null
+
+    inner class ComicHolder(itemView: View) : RecyclerView.ViewHolder(itemView) , View.OnClickListener {
+        val mimageComic = itemView.imageComic
+
+        init {
+            mimageComic.setOnClickListener(this)
+        }
+        override fun onClick(v: View?) {
+            val position = adapterPosition
+            val i = v!!.id
+            if (i == R.id.imageComic){
+                detailComic!!.onDetailsComic(myDataset[position])
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ComicHolder {
@@ -25,8 +40,7 @@ RecyclerView.Adapter<ComicAdapter.ComicHolder>(){
     }
 
     override fun onBindViewHolder(holder: ComicHolder, position: Int) {
-        holder.mimageComic.text = myDataset[position].firstName
-
+        holder.mimageComic.text = myDataset[position].title
         /*if(myDataset[position].thumbnail != null){
             Picasso.get()
                 .load(myDataset[position].thumbnail!!.path + EXTENSIONS_IMAGE)
@@ -38,4 +52,8 @@ RecyclerView.Adapter<ComicAdapter.ComicHolder>(){
     }
 
     override fun getItemCount(): Int = myDataset.size
+
+    fun onDetailComic(onDetailsComicsInterfaces: onDetailsComicsInterfaces) {
+        this.detailComic = onDetailsComicsInterfaces
+    }
 }
