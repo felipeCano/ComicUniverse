@@ -2,8 +2,25 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/navigation_graph"
-    app:startDestination="@id/comicFragment">
+    app:startDestination="@id/operationsFragment">
 
+    <fragment
+        android:id="@+id/detailComicFragment"
+        android:name="com.comic.universe.ui.view.detail.DetailComicFragment"
+        android:label="DetailComicFragment" >
+        <action
+            android:id="@+id/action_detailComicFragment_pop"
+            app:popUpTo="@id/detailComicFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/operationsFragment"
+        android:name="com.comic.universe.ui.view.operations.OperationsFragment"
+        android:label="OperationsFragment" >
+        <action
+            android:id="@+id/action_operationsFragment_to_comicFragment"
+            app:destination="@id/comicFragment" />
+    </fragment>
     <fragment
         android:id="@+id/comicFragment"
         android:name="com.comic.universe.ui.view.comic.ComicFragment"
@@ -11,9 +28,9 @@
         <action
             android:id="@+id/action_comicFragment_to_detailComicFragment"
             app:destination="@id/detailComicFragment" />
+        <action
+            android:id="@+id/action_comicFragment_pop"
+            app:popUpTo="@id/comicFragment"
+            app:popUpToInclusive="true" />
     </fragment>
-    <fragment
-        android:id="@+id/detailComicFragment"
-        android:name="com.comic.universe.ui.view.detail.DetailComicFragment"
-        android:label="DetailComicFragment" />
 </navigation>
