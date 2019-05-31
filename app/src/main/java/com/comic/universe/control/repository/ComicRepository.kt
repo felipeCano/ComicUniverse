@@ -59,8 +59,9 @@ class ComicRepository(
     }
 
 
-    fun getDetailComic(serieId: Int): Observable<Comic> {
-        return apiComic.getDetailComic(serieId).map { response ->
+    fun getDetailComic(comicId: Int): Observable<Comic> {
+        return apiComic.getDetailComic(comicId).map { response ->
+            Log.d("getDetailComic", response.toString())
             Gson().fromJson(response, Comic::class.java)
         }
     }

@@ -9,6 +9,7 @@ import com.comic.universe.control.model.local.Comic
 import com.comic.universe.control.repository.ComicRepository
 import com.comic.universe.ui.adapter.ComicAdapter
 import com.comic.universe.ui.interfaces.onDetailsComicsInterfaces
+import com.comic.universe.util.Multiple
 import kotlinx.android.synthetic.main.fragment_comic.*
 
 class ComicFragment : BaseFragment() , onDetailsComicsInterfaces {
@@ -16,6 +17,7 @@ class ComicFragment : BaseFragment() , onDetailsComicsInterfaces {
     lateinit var comicViewModel: ComicViewModel
     lateinit var comicRepository: ComicRepository
     var mAdapterComic : ComicAdapter? = null
+    var responseOperation : Int = 0
 
     override fun onFinishedViewLoad() {
         initializeUi()
@@ -24,16 +26,14 @@ class ComicFragment : BaseFragment() , onDetailsComicsInterfaces {
     private fun initializeUi(){
         comicRepository = ComicRepository(retrofit)
         comicViewModel = ComicViewModel(comicRepository)
-        comicViewModel.getComic()
-        //comicViewModel.getCharacters()
-        //comicViewModel.getCreators()
-        //comicViewModel.getEvents()
-        //comicViewModel.getSeries()
         //comicViewModel.getStories()
+        //responseOperation = arguments!!.getInt("responseOperation", responseOperation)
 
+        comicViewModel.getComic()
         comicViewModel.liveData.observe(this, recyclerComic)
-    }
 
+        //isMutiple(responseOperation.toDouble())
+    }
 
     private fun initAdapterComic(comic : List<Comic>){
         mAdapterComic = ComicAdapter(comic)
@@ -51,6 +51,35 @@ class ComicFragment : BaseFragment() , onDetailsComicsInterfaces {
             Log.d("idprueba", comic.id.toString())
             navController()!!.navigate(R.id.action_comicFragment_to_detailComicFragment, bundle)
         }
+
+    fun isMutiple(numb : Double) {
+        when {
+            numb == 0.0 -> {
+                //comicViewModel.getCharacters()
+            }
+            numb.ResponseMultipleOf(3) -> {
+                comicViewModel.getComic()
+                comicViewModel.liveData.observe(this, recyclerComic)
+            }
+            numb.ResponseMultipleOf(5) -> {
+                comicViewModel.getComic()
+                comicViewModel.liveData.observe(this, recyclerComic)
+            }
+            numb.ResponseMultipleOf(7) -> {
+                //comicViewModel.getCreators()
+            }
+            numb.ResponseMultipleOf(11) -> {
+                //comicViewModel.getEvents()
+            }
+            numb.ResponseMultipleOf(13) -> {
+                //comicViewModel.getSeries()
+            }
+        }
+    }
+
+    fun Double.ResponseMultipleOf(value: Int): Boolean {
+        return (this % value) == 0.0
+    }
 
     override fun fragmentLayout(): Int = R.layout.fragment_comic
 }

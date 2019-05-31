@@ -17,11 +17,11 @@ class OperationsFragment : BaseFragment() {
         instructionsForUse.text = EXPLANATION_USE
 
         btnResolved.setOnClickListener {
-            val responseOperation = OperationStrings.evaluate(evEvaluation.text.toString())
+            /*val responseOperation = OperationStrings.evaluate(evEvaluation.text.toString())
             val bundle = Bundle()
-            bundle.putInt("responseOperation", responseOperation)
-            navController()!!.navigate(R.id.action_operationsFragment_to_comicFragment)
-            evEvaluation.text.clear()
+            bundle.putInt("responseOperation", responseOperation)*/
+            navController()!!.navigate(R.id.action_operationsFragment_to_comicFragment/*,bundle*/ )
+           // evEvaluation.text.clear()
         }
     }
 
