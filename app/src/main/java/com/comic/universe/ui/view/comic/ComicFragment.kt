@@ -9,7 +9,6 @@ import com.comic.universe.control.model.local.Comic
 import com.comic.universe.control.repository.ComicRepository
 import com.comic.universe.ui.adapter.ComicAdapter
 import com.comic.universe.ui.interfaces.onDetailsComicsInterfaces
-import com.comic.universe.util.Multiple
 import kotlinx.android.synthetic.main.fragment_comic.*
 
 class ComicFragment : BaseFragment() , onDetailsComicsInterfaces {

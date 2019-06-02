@@ -89,9 +89,54 @@ interface ApiComic {
     ): Observable<JsonElement>
 
     @Headers(ACCEPT_TOKEN, CONTENT_TYPE)
-    @GET("{comicId}")
+    @GET("comics/{comicId}")
     fun getDetailComic(
         @Path("comicId") comicId: Int,
+        @Query("apikey") apiKey: String = API_KEY_PUBLIC,
+        @Query("ts") timestamp: String = TIMESTAMP_MD5.toString(),
+        @Query("hash") hash: String = md5()
+    ): Observable<JsonElement>
+
+    @Headers(ACCEPT_TOKEN, CONTENT_TYPE)
+    @GET("characters/{characterId}")
+    fun getDetailCharacters(
+        @Path("characterId") comicId: Int,
+        @Query("apikey") apiKey: String = API_KEY_PUBLIC,
+        @Query("ts") timestamp: String = TIMESTAMP_MD5.toString(),
+        @Query("hash") hash: String = md5()
+    ): Observable<JsonElement>
+
+    @Headers(ACCEPT_TOKEN, CONTENT_TYPE)
+    @GET("creators/{creatorId}")
+    fun getDetailCreators(
+        @Path("creatorId") comicId: Int,
+        @Query("apikey") apiKey: String = API_KEY_PUBLIC,
+        @Query("ts") timestamp: String = TIMESTAMP_MD5.toString(),
+        @Query("hash") hash: String = md5()
+    ): Observable<JsonElement>
+
+    @Headers(ACCEPT_TOKEN, CONTENT_TYPE)
+    @GET("events/{eventId}")
+    fun getDetailEvents(
+        @Path("eventId") comicId: Int,
+        @Query("apikey") apiKey: String = API_KEY_PUBLIC,
+        @Query("ts") timestamp: String = TIMESTAMP_MD5.toString(),
+        @Query("hash") hash: String = md5()
+    ): Observable<JsonElement>
+
+    @Headers(ACCEPT_TOKEN, CONTENT_TYPE)
+    @GET("series/{seriesId}")
+    fun getDetailSeries(
+        @Path("seriesId") comicId: Int,
+        @Query("apikey") apiKey: String = API_KEY_PUBLIC,
+        @Query("ts") timestamp: String = TIMESTAMP_MD5.toString(),
+        @Query("hash") hash: String = md5()
+    ): Observable<JsonElement>
+
+    @Headers(ACCEPT_TOKEN, CONTENT_TYPE)
+    @GET("stories/{storyId}")
+    fun getDetailStories(
+        @Path("storyId") comicId: Int,
         @Query("apikey") apiKey: String = API_KEY_PUBLIC,
         @Query("ts") timestamp: String = TIMESTAMP_MD5.toString(),
         @Query("hash") hash: String = md5()

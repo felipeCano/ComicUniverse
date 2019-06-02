@@ -19,6 +19,8 @@ open class BaseViewModel : ViewModel() {
     val liveDataCharacters = MutableLiveData<List<Characters>>()
     val liveDataCreators = MutableLiveData<List<Creators>>()
     val liveDataDetailComic = MutableLiveData<Comic>()
+    var liveDataDetailCharacters = MutableLiveData<Characters>()
+    var liveDataDetailCreators = MutableLiveData<Creators>()
 
     protected fun addComics(observable: Observable<List<Comic>>) {
         val disposables1: Disposable = observable.subscribeOn(Schedulers.io())
@@ -72,6 +74,34 @@ open class BaseViewModel : ViewModel() {
             }
             .subscribe ({
                 liveDataDetailComic.postValue(it)
+                Log.d("addDisposableDetail", it.toString())
+            },{
+                Log.d("holiDetail",it.toString())
+            })
+        )
+    }
+
+    protected fun  addDisposableDetailCharacters(observable: Observable<Characters>){
+        disposables.add(observable.subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe{
+            }
+            .subscribe ({
+                liveDataDetailCharacters.postValue(it)
+                Log.d("addDisposableDetail", it.toString())
+            },{
+                Log.d("holiDetail",it.toString())
+            })
+        )
+    }
+
+    protected fun  addDisposableDetailCreators(observable: Observable<Creators>){
+        disposables.add(observable.subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe{
+            }
+            .subscribe ({
+                liveDataDetailCreators.postValue(it)
                 Log.d("addDisposableDetail", it.toString())
             },{
                 Log.d("holiDetail",it.toString())

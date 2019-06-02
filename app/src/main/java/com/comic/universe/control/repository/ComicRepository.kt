@@ -62,7 +62,42 @@ class ComicRepository(
     fun getDetailComic(comicId: Int): Observable<Comic> {
         return apiComic.getDetailComic(comicId).map { response ->
             Log.d("getDetailComic", response.toString())
-            Gson().fromJson(response, Comic::class.java)
+            Gson().fromJson(response, Marvel::class.java).data.results[0]
+        }
+    }
+
+    fun getDetailChacters(comicId: Int): Observable<Characters> {
+        return apiComic.getDetailCharacters(comicId).map { response ->
+            Log.d("getDetailCharacters", response.toString())
+            Gson().fromJson(response, MarvelCharacters::class.java).data.results[0]
+        }
+    }
+
+    fun getDetailCreators(comicId: Int): Observable<Creators> {
+        return apiComic.getDetailCreators(comicId).map { response ->
+            Log.d("getDetailCreators", response.toString())
+            Gson().fromJson(response, MarvelCreators::class.java).data.results[0]
+        }
+    }
+
+    fun getDetailEvents(comicId: Int): Observable<Comic> {
+        return apiComic.getDetailEvents(comicId).map { response ->
+            Log.d("getDetailEvents", response.toString())
+            Gson().fromJson(response, Marvel::class.java).data.results[0]
+        }
+    }
+
+    fun getDetailSeries(comicId: Int): Observable<Comic> {
+        return apiComic.getDetailSeries(comicId).map { response ->
+            Log.d("getDetailSeries", response.toString())
+            Gson().fromJson(response, Marvel::class.java).data.results[0]
+        }
+    }
+
+    fun getDetailStorie(comicId: Int): Observable<Comic> {
+        return apiComic.getDetailStories(comicId).map { response ->
+            Log.d("getDetailStories", response.toString())
+            Gson().fromJson(response, Marvel::class.java).data.results[0]
         }
     }
 }
