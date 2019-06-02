@@ -5,18 +5,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.comic.universe.R
-import com.comic.universe.control.model.local.Comic
-import com.comic.universe.control.model.local.Creators
+import com.comic.universe.control.model.local.Characters
 import com.comic.universe.ui.interfaces.onDetailsComicsInterfaces
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.adapter_comic.view.*
 
-class ComicAdapter(var myDataset: List<Comic>) :
-    RecyclerView.Adapter<ComicAdapter.ComicHolder>() {
+class CharactersAdapter(var myDataset: List<Characters>) :
+    RecyclerView.Adapter<CharactersAdapter.CharactersHolder>() {
 
     var detailComic: onDetailsComicsInterfaces? = null
 
-    inner class ComicHolder(itemView: View) : RecyclerView.ViewHolder(itemView) , View.OnClickListener {
+    inner class CharactersHolder(itemView: View) : RecyclerView.ViewHolder(itemView) , View.OnClickListener {
         val mimageComic = itemView.imageComic
 
         init {
@@ -26,19 +24,19 @@ class ComicAdapter(var myDataset: List<Comic>) :
             val position = adapterPosition
             val i = v!!.id
             if (i == R.id.imageComic){
-                detailComic!!.onDetailsComic(myDataset[position])
+                detailComic!!.onDetailCharacters(myDataset[position])
             }
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ComicHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharactersHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.adapter_comic, parent, false)
-        return ComicHolder(view)
+        return CharactersHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ComicHolder, position: Int) {
-        holder.mimageComic.text = myDataset[position].title
+    override fun onBindViewHolder(holder: CharactersHolder, position: Int) {
+        holder.mimageComic.text = myDataset[position].name
         /*if(myDataset[position].thumbnail != null){
             Picasso.get()
                 .load(myDataset[position].thumbnail!!.path + EXTENSIONS_IMAGE)
